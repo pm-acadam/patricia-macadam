@@ -90,6 +90,18 @@ app.use('/api/courses', coursesRoutes);
 const publicCoursesRoutes = require('./src/routes/courses/public');
 app.use('/api/public/courses', publicCoursesRoutes);
 
+const testimonialsRoutes = require('./src/routes/testimonials/main');
+app.use('/api/testimonials', testimonialsRoutes);
+
+const publicTestimonialsRoutes = require('./src/routes/testimonials/public');
+app.use('/api/public/testimonials', publicTestimonialsRoutes);
+
+const workshopsRoutes = require('./src/routes/workshops/main');
+app.use('/api/workshops', workshopsRoutes);
+
+const publicWorkshopsRoutes = require('./src/routes/workshops/public');
+app.use('/api/public/workshops', publicWorkshopsRoutes);
+
 // Health check
 app.get('/health', (req, res) => {
     res.json({
