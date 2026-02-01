@@ -10,7 +10,7 @@ const app = express();
 // CORS Middleware
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Credentials', 'true');
     if (req.method === 'OPTIONS') {
@@ -101,6 +101,12 @@ app.use('/api/workshops', workshopsRoutes);
 
 const publicWorkshopsRoutes = require('./src/routes/workshops/public');
 app.use('/api/public/workshops', publicWorkshopsRoutes);
+
+const inquiriesRoutes = require('./src/routes/inquiries/main');
+app.use('/api/inquiries', inquiriesRoutes);
+
+const publicInquiriesRoutes = require('./src/routes/inquiries/public');
+app.use('/api/public/inquiries', publicInquiriesRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
